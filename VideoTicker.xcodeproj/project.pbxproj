@@ -42,6 +42,7 @@
 			isa = PBXGroup;
 			children = (
 				66955283265A3F4300389536 /* VideoTicker */,
+				6695528E265A3F4500389536 /* VideoTicker.entitlements */,
 				66955288265A3F4500389536 /* Assets.xcassets */,
 				66955282265A3F4300389536 /* Products */,
 			);
@@ -72,7 +73,6 @@
 			children = (
 				6695528D265A3F4500389536 /* Info.plist */,
 				66955284265A3F4300389536 /* AppDelegate.swift */,
-				6695528E265A3F4500389536 /* VideoTicker.entitlements */,
 			);
 			path = Startup;
 			sourceTree = "<group>";
@@ -287,7 +287,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = VideoTicker/Startup/VideoTicker.entitlements;
+				CODE_SIGN_ENTITLEMENTS = VideoTicker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = AJ997HVTPM;
@@ -309,7 +309,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = VideoTicker/Startup/VideoTicker.entitlements;
+				CODE_SIGN_ENTITLEMENTS = VideoTicker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = AJ997HVTPM;
