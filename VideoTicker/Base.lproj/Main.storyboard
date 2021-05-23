@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="18122"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="18122"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,21 +676,23 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="VideoTicker" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="76" y="-248"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                <windowController showSeguePresentationStyle="single" id="B8D-0N-5wS" customClass="MainWindowController" customModule="VideoTicker" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="VideoTicker" separatorStyle="shadow" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="584" y="369" width="480" height="480"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="480" height="480"/>
+                        <value key="maxSize" type="size" width="480" height="480"/>
+                        <contentBorderThickness minY="30"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
@@ -698,20 +703,214 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="75" y="222"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="VideoTicker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="482" height="480"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kix-dQ-2r9" customClass="DCDroppableImageWell" customModule="VideoTicker" customModuleProvider="target">
+                                <rect key="frame" x="181" y="230" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="114" id="fam-nq-yTJ"/>
+                                    <constraint firstAttribute="width" constant="114" id="qh3-Jn-bVE"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="J6U-4O-But">
+                                    <imageReference key="image" image="film" catalog="system" symbolScale="large" renderingMode="template"/>
+                                </imageCell>
+                                <color key="contentTintColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <outlet property="dcDelegate" destination="XfG-lQ-9wD" id="Vvu-PN-w11"/>
+                                </connections>
+                            </imageView>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C6u-VD-Gn2">
+                                <rect key="frame" x="111" y="184" width="261" height="26"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Drop your movie file above!" id="Kya-36-KIF">
+                                    <font key="font" metaFont="systemLight" size="22"/>
+                                    <color key="textColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1AX-3B-G70">
+                                <rect key="frame" x="210" y="116" width="62" height="40"/>
+                                <buttonCell key="cell" type="push" title="Start" bezelStyle="rounded" alignment="center" controlSize="large" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Sx8-ML-fZy">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="startButtonPressed:" target="XfG-lQ-9wD" id="pzt-Qf-L4Y"/>
+                                </connections>
+                            </button>
+                            <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="1" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jI4-Xa-UQl">
+                                <rect key="frame" x="0.0" y="400" width="482" height="80"/>
+                                <subviews>
+                                    <box boxType="custom" borderType="none" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="zGA-vI-v8O">
+                                        <rect key="frame" x="0.0" y="0.0" width="164" height="80"/>
+                                        <view key="contentView" id="yYs-ZI-773">
+                                            <rect key="frame" x="0.0" y="0.0" width="164" height="80"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jW7-1f-BkJ">
+                                                    <rect key="frame" x="9" y="41" width="63" height="27"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Step 1" id="NRE-Zm-14p">
+                                                        <font key="font" metaFont="systemThin" size="23"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5hH-PD-Ezm">
+                                                    <rect key="frame" x="9" y="15" width="134" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Drop in your movie file" id="QtR-P7-0du">
+                                                        <font key="font" metaFont="systemMedium" size="12"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                            </subviews>
+                                        </view>
+                                        <color key="fillColor" name="systemBlueColor" catalog="System" colorSpace="catalog"/>
+                                    </box>
+                                    <box boxType="custom" borderType="none" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="P8G-Aj-hIv">
+                                        <rect key="frame" x="165" y="0.0" width="158" height="80"/>
+                                        <view key="contentView" id="SHT-S2-Egm">
+                                            <rect key="frame" x="0.0" y="0.0" width="158" height="80"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="38V-MO-yzr">
+                                                    <rect key="frame" x="9" y="41" width="66" height="27"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Step 2" id="4qw-Aa-rT3">
+                                                        <font key="font" metaFont="systemThin" size="23"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QFx-nm-MGo">
+                                                    <rect key="frame" x="9" y="15" width="128" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Check the translation" id="LL6-pb-wZe">
+                                                        <font key="font" metaFont="systemMedium" size="12"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                            </subviews>
+                                        </view>
+                                        <color key="fillColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </box>
+                                    <box boxType="custom" borderType="none" cornerRadius="4" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="vOV-jX-YeY">
+                                        <rect key="frame" x="324" y="0.0" width="158" height="80"/>
+                                        <view key="contentView" id="MCg-Cx-zqs">
+                                            <rect key="frame" x="0.0" y="0.0" width="158" height="80"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="42k-GP-Vqs">
+                                                    <rect key="frame" x="9" y="41" width="67" height="27"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Step 3" id="HiM-tr-CcH">
+                                                        <font key="font" metaFont="systemThin" size="23"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VNU-W5-7vn">
+                                                    <rect key="frame" x="9" y="15" width="109" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Export your movie" id="w9m-A9-r2G">
+                                                        <font key="font" metaFont="systemMedium" size="12"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                            </subviews>
+                                        </view>
+                                        <color key="fillColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </box>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="hTj-Fe-8Ao"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <real value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                            <box boxType="custom" borderType="none" borderWidth="0.0" title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="B2g-Hg-qOx">
+                                <rect key="frame" x="0.0" y="30" width="482" height="44"/>
+                                <view key="contentView" id="EoF-yi-ybh">
+                                    <rect key="frame" x="0.0" y="0.0" width="482" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fF-Md-Fg8">
+                                            <rect key="frame" x="-2" y="12" width="486" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="7ov-oX-hk3"/>
+                                                <constraint firstAttribute="width" constant="482" id="ifp-eO-3dG"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" lineBreakMode="truncatingHead" alignment="right" usesSingleLineMode="YES" id="do1-tA-XkD">
+                                                <font key="font" size="18" name="AmericanTypewriter"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="2fF-Md-Fg8" firstAttribute="centerY" secondItem="EoF-yi-ybh" secondAttribute="centerY" id="HMI-Rz-IuM"/>
+                                        <constraint firstItem="2fF-Md-Fg8" firstAttribute="centerX" secondItem="EoF-yi-ybh" secondAttribute="centerX" id="KUk-k2-bT2"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="uV7-ty-Zyu"/>
+                                </constraints>
+                                <color key="fillColor" white="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </box>
+                            <avPlayerView hidden="YES" controlsStyle="none" videoGravity="resizeAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="s5u-RN-50F">
+                                <rect key="frame" x="0.0" y="75" width="482" height="323"/>
+                            </avPlayerView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="1AX-3B-G70" firstAttribute="top" secondItem="C6u-VD-Gn2" secondAttribute="bottom" constant="34" id="BDx-8w-tYh"/>
+                            <constraint firstItem="C6u-VD-Gn2" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="CZv-gv-O3J"/>
+                            <constraint firstItem="jI4-Xa-UQl" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="QIp-PN-sbk"/>
+                            <constraint firstAttribute="bottom" secondItem="B2g-Hg-qOx" secondAttribute="bottom" constant="30" id="QQy-Nr-CCF"/>
+                            <constraint firstItem="Kix-dQ-2r9" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="SeT-tE-Q9q"/>
+                            <constraint firstItem="1AX-3B-G70" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="WLc-OS-p80"/>
+                            <constraint firstItem="s5u-RN-50F" firstAttribute="top" secondItem="jI4-Xa-UQl" secondAttribute="bottom" constant="2" id="aQw-n4-yod"/>
+                            <constraint firstAttribute="trailing" secondItem="jI4-Xa-UQl" secondAttribute="trailing" id="afs-10-6Na"/>
+                            <constraint firstItem="jI4-Xa-UQl" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="fvu-vl-Y0S"/>
+                            <constraint firstAttribute="trailing" secondItem="s5u-RN-50F" secondAttribute="trailing" id="gGt-aX-5mN"/>
+                            <constraint firstItem="Kix-dQ-2r9" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="133" id="hXR-UJ-wlp"/>
+                            <constraint firstItem="B2g-Hg-qOx" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="hy8-C3-dox"/>
+                            <constraint firstItem="C6u-VD-Gn2" firstAttribute="top" secondItem="Kix-dQ-2r9" secondAttribute="bottom" constant="23" id="m7I-K2-dx3"/>
+                            <constraint firstItem="B2g-Hg-qOx" firstAttribute="top" secondItem="s5u-RN-50F" secondAttribute="bottom" constant="1" id="nAs-pt-mse"/>
+                            <constraint firstItem="s5u-RN-50F" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="p9r-Ug-Lwy"/>
+                            <constraint firstAttribute="trailing" secondItem="B2g-Hg-qOx" secondAttribute="trailing" id="vws-ic-YWx"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="startButton" destination="1AX-3B-G70" id="I8M-Ru-DiN"/>
+                        <outlet property="tickerLabel" destination="2fF-Md-Fg8" id="7Ax-Mg-obQ"/>
+                        <outlet property="videoPlayerView" destination="s5u-RN-50F" id="3h4-EN-3f6"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="957"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="film" catalog="system" width="23" height="17"/>
+    </resources>
 </document>

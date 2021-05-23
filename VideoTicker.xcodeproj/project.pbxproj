@@ -11,6 +11,8 @@
 		66955287265A3F4300389536 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66955286265A3F4300389536 /* ViewController.swift */; };
 		66955289265A3F4500389536 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66955288265A3F4500389536 /* Assets.xcassets */; };
 		6695528C265A3F4500389536 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6695528A265A3F4500389536 /* Main.storyboard */; };
+		66955296265A432200389536 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66955295265A432200389536 /* MainWindowController.swift */; };
+		66955298265A447C00389536 /* DCDroppableImageWell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66955297265A447C00389536 /* DCDroppableImageWell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		6695528B265A3F4500389536 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6695528D265A3F4500389536 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6695528E265A3F4500389536 /* VideoTicker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VideoTicker.entitlements; sourceTree = "<group>"; };
+		66955295265A432200389536 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		66955297265A447C00389536 /* DCDroppableImageWell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DCDroppableImageWell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +42,7 @@
 			isa = PBXGroup;
 			children = (
 				66955283265A3F4300389536 /* VideoTicker */,
+				66955288265A3F4500389536 /* Assets.xcassets */,
 				66955282265A3F4300389536 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,14 +58,23 @@
 		66955283265A3F4300389536 /* VideoTicker */ = {
 			isa = PBXGroup;
 			children = (
-				66955284265A3F4300389536 /* AppDelegate.swift */,
-				66955286265A3F4300389536 /* ViewController.swift */,
-				66955288265A3F4500389536 /* Assets.xcassets */,
+				66955294265A3F5800389536 /* Startup */,
 				6695528A265A3F4500389536 /* Main.storyboard */,
-				6695528D265A3F4500389536 /* Info.plist */,
-				6695528E265A3F4500389536 /* VideoTicker.entitlements */,
+				66955295265A432200389536 /* MainWindowController.swift */,
+				66955286265A3F4300389536 /* ViewController.swift */,
+				66955297265A447C00389536 /* DCDroppableImageWell.swift */,
 			);
 			path = VideoTicker;
+			sourceTree = "<group>";
+		};
+		66955294265A3F5800389536 /* Startup */ = {
+			isa = PBXGroup;
+			children = (
+				6695528D265A3F4500389536 /* Info.plist */,
+				66955284265A3F4300389536 /* AppDelegate.swift */,
+				6695528E265A3F4500389536 /* VideoTicker.entitlements */,
+			);
+			path = Startup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,8 +146,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66955298265A447C00389536 /* DCDroppableImageWell.swift in Sources */,
 				66955287265A3F4300389536 /* ViewController.swift in Sources */,
 				66955285265A3F4300389536 /* AppDelegate.swift in Sources */,
+				66955296265A432200389536 /* MainWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,16 +287,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = VideoTicker/VideoTicker.entitlements;
+				CODE_SIGN_ENTITLEMENTS = VideoTicker/Startup/VideoTicker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = AJ997HVTPM;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = VideoTicker/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/VideoTicker/Startup/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = derbs.VideoTicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -292,16 +309,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = VideoTicker/VideoTicker.entitlements;
+				CODE_SIGN_ENTITLEMENTS = VideoTicker/Startup/VideoTicker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = AJ997HVTPM;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = VideoTicker/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/VideoTicker/Startup/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = derbs.VideoTicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
